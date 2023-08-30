@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Add Order</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="form" class="bg-light py-5">
+            <div class="container">
+                <p>Enter order details</p>
+                {% if errormessage %}
+                <div class="alert alert-danger" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+                <form action="/add-order" method="post">
+                    <div class="form-group">
+                        <label for="name">Customer</label>
+                        <select id="customerId" name="customerId" class="form-control" required>
+                            {% for customer in customers %}
+                            <option value="{{ customer.customerId }}">{{ customer.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Date</label>
+                        <input type="date" id="orderDate" name="orderDate" class="form-control" value="{{ orderDate }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

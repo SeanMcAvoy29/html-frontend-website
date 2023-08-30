@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Confirm Order</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="form" class="bg-light py-5">
+            <div class="container">
+                {% if errormessage %}
+                <div class="alert alert-danger" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+                <form action="/add-order-confirmation" method="post">
+                    <div class="form-group">
+                        <label for="customerId">CustomerID: {{ customerId }}</label>
+                     </div>
+                    <div class="form-group">
+                        <label for="orderDate">Order Date: {{ orderDate }}</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>  
+</body>
+</html>
